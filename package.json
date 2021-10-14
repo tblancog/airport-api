@@ -1,0 +1,20 @@
+{
+  "name": "flights",
+  "version": "1.0.0",
+  "description": "Flights challenge app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Tony Blanco",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.2.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.9"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "nodemon": "^2.0.2"
+  }
+}

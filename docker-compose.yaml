@@ -1,0 +1,10 @@
+version: '3'
+services:
+  database:
+    image: 'mongo'
+    container_name: 'airports'
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27017-27019:27017-27019'
+    restart: always
