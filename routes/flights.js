@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Flight = require('../models/Flight');
 const Airport = require('../models/Airport');
-const Weather = require('../models/Weather');
 
 router.get('/', async (_, res) => {
   try {
