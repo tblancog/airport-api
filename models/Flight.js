@@ -4,7 +4,14 @@ const FlightSchema = mongoose.Schema({
   code: {
     type: String,
     required: true,
-    unique: true,
+  },
+  airline: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
   },
   departure: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,6 +28,10 @@ const FlightSchema = mongoose.Schema({
   status: {
     type: String,
     required: true,
+  },
+  meal: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'meal',
   },
 });
 module.exports = mongoose.model('flight', FlightSchema);

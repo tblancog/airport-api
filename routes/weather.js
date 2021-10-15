@@ -7,8 +7,9 @@ router.get('/', async (_, res) => {
     const list = await Weather.find();
     res.json(list);
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server Error');
+    console.error(err.message);
+    const code = 400;
+    res.status(code).json({ code, msg: 'Bad request' });
   }
 });
 
@@ -22,8 +23,9 @@ router.post('/', async (req, res) => {
     const weather = await newWeather.save();
     res.json(weather);
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server error');
+    console.error(err.message);
+    const code = 400;
+    res.status(code).json({ code, msg: 'Bad request' });
   }
 });
 

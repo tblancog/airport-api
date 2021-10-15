@@ -18,7 +18,7 @@ const AiportSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  weatherId: {
+  weather: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'weather',
   },

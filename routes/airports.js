@@ -2,25 +2,32 @@ const express = require('express');
 const router = express.Router();
 const Airport = require('../models/Airport');
 
+// Ger a list of airports
 router.get('/', async (_, res) => {
   try {
-    const list = await Airport.find();
+    const list = await Airport.find().populate({
+      path: 'weather',
+      select: 'title',
+    });
     res.json(list);
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server Error');
+    console.error(err.message);
+    const code = 400;
+    res.status(code).json({ code, msg: 'Bad request' });
   }
 });
 
+// Create airport
 router.post('/', async (req, res) => {
-  const { code, title, city, status, weatherId } = req.body;
+  const { code, title, city, status, weather } = req.body;
   try {
-    const newAirport = new Airport({ code, title, city, status, weatherId });
+    const newAirport = new Airport({ code, title, city, status, weather });
     const airport = await newAirport.save();
     res.json(airport);
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server error');
+    console.error(err.message);
+    const code = 400;
+    res.status(code).json({ code, msg: 'Bad request' });
   }
 });
 
@@ -44,8 +51,9 @@ router.put('/:id/status', async (req, res) => {
     );
     res.json(airport);
   } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server error');
+    console.error(err.message);
+    const code = 400;
+    res.status(code).json({ code, msg: 'Bad request' });
   }
 });
 
