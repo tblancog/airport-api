@@ -159,3 +159,4 @@ Also as for the entities, I considered that in order to create 'flights' the ent
 Same for Airport, I needed to create first:
 
 - Weather to set it as a current status, so when doing queries in flights they can look up either the destination or departure airport weather conditions.
+- Meal: to enable the flights to have a service meal on creation
