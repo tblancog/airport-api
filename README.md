@@ -24,13 +24,14 @@ npm run start
 
 ## Usage
 
-Point your browser to localhost:5000 to do a sanity test, you should see: 'Welcome to the airport API'
-You can use Postman or similar to hit api endpoints
+Point your browser to localhost:5000 to do a sanity test, you should see: 'Welcome to the airport API'.
+You can use Postman or similar to hit api endpoints.
+
 There's an endpoint to insert mock data to start using it right wait with populated data.
 
 ### Create some entities
 
-You can use the endpoint mock to insert mock data if you don't want to create each entity
+You can use the endpoint mock to insert mock data if you don't want to create each entity.
 
 ```bash
 curl --location --request POST 'localhost:5000/api/mock'
