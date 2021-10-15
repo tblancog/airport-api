@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Flight = require('../models/Flight');
+const Airport = require('../models/Airport');
+const Weather = require('../models/Weather');
 
 router.get('/', async (_, res) => {
   try {
@@ -26,7 +28,7 @@ router.get('/:id/availability', async (req, res) => {
     const { status: destinationStatus } = Airport.findById(flight.destination);
 
     // If destination or departure airport is other than available then set flight as delayed
-    if (departureStatus || destinationStatus) {
+    if (departureStatus !== 'ontime' || destinationStatus !== 'ontime') {
       flight.status = 'delayed';
       flight = await Flight.findByIdAndUpdate(
         req.params.id,
@@ -35,8 +37,8 @@ router.get('/:id/availability', async (req, res) => {
       );
     } else {
       flight.status = 'ontime';
-      res.json(`Flight ${flight} is ${flight.status}`);
     }
+    res.send(`Flight '${flight.code}' is ${flight.status}`);
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server error');
